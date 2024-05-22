@@ -17,7 +17,7 @@ struct GolfTrackProApp: App {
             if isLoading {
                 LandingView()
             } else {
-                GolfRoundView()
+                MainTabView()
             }
         }
         .modelContainer(for: [Swing.self, Score.self, Club.self]) { result in

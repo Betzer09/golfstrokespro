@@ -17,6 +17,10 @@
 		0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9372BFE5F1500A56F1E /* Swing.swift */; };
 		0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9392BFE5F2100A56F1E /* Club.swift */; };
 		0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E93B2BFE677300A56F1E /* LandingView.swift */; };
+		0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E93E2BFE6D2200A56F1E /* MainTabView.swift */; };
+		0789E9422BFE6D5700A56F1E /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9412BFE6D5700A56F1E /* HistoryView.swift */; };
+		0789E9442BFE6D5F00A56F1E /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9432BFE6D5F00A56F1E /* StatsView.swift */; };
+		0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9452BFE6D6900A56F1E /* ProfileView.swift */; };
 		0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */; };
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
@@ -34,6 +38,10 @@
 		0789E9372BFE5F1500A56F1E /* Swing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swing.swift; sourceTree = "<group>"; };
 		0789E9392BFE5F2100A56F1E /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		0789E93B2BFE677300A56F1E /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		0789E93E2BFE6D2200A56F1E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		0789E9412BFE6D5700A56F1E /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		0789E9432BFE6D5F00A56F1E /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		0789E9452BFE6D6900A56F1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdjuster.swift; sourceTree = "<group>"; };
 		0797A9AC2BFD804C0022D874 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTrackerView.swift; sourceTree = "<group>"; };
@@ -103,15 +111,43 @@
 		0752E8942BFA5DB70073072E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0789E9402BFE6D3700A56F1E /* Tabs */,
+				0789E93D2BFE6D0B00A56F1E /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0789E93D2BFE6D0B00A56F1E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0789E93B2BFE677300A56F1E /* LandingView.swift */,
 				0752E8822BFA5A040073072E /* GolfTrackProApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0789E9402BFE6D3700A56F1E /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				0789E9482BFE6DA100A56F1E /* Game */,
+				0789E93E2BFE6D2200A56F1E /* MainTabView.swift */,
+				0789E9412BFE6D5700A56F1E /* HistoryView.swift */,
+				0789E9432BFE6D5F00A56F1E /* StatsView.swift */,
+				0789E9452BFE6D6900A56F1E /* ProfileView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		0789E9482BFE6DA100A56F1E /* Game */ = {
+			isa = PBXGroup;
+			children = (
 				0752E8902BFA5AB10073072E /* GolfRoundView.swift */,
 				0752E8922BFA5D150073072E /* HoleScoreView.swift */,
 				0718BB882BFC3A9000A29183 /* DetailView.swift */,
 				0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */,
 				0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */,
-				0789E93B2BFE677300A56F1E /* LandingView.swift */,
 			);
-			path = Views;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		0797A9B02BFD92CB0022D874 /* GPSMocks */ = {
@@ -198,13 +234,17 @@
 				0752E8932BFA5D150073072E /* HoleScoreView.swift in Sources */,
 				0752E8832BFA5A040073072E /* GolfTrackProApp.swift in Sources */,
 				0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */,
+				0789E9422BFE6D5700A56F1E /* HistoryView.swift in Sources */,
 				0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* DetailView.swift in Sources */,
+				0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */,
 				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
 				0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */,
 				0752E8962BFA6DF10073072E /* Score.swift in Sources */,
 				0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */,
 				0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */,
+				0789E9442BFE6D5F00A56F1E /* StatsView.swift in Sources */,
+				0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
