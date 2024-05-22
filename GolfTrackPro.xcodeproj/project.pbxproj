@@ -16,6 +16,7 @@
 		0752E8962BFA6DF10073072E /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E8952BFA6DF10073072E /* Score.swift */; };
 		0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */; };
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
+		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		0752E8952BFA6DF10073072E /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdjuster.swift; sourceTree = "<group>"; };
 		0797A9AC2BFD804C0022D874 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTrackerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +71,11 @@
 		0752E8812BFA5A040073072E /* GolfTrackPro */ = {
 			isa = PBXGroup;
 			children = (
+				0797A9AC2BFD804C0022D874 /* LocationManager.swift */,
 				0718BB8A2BFC405400A29183 /* Models */,
 				0752E8942BFA5DB70073072E /* Views */,
 				0752E8862BFA5A050073072E /* Assets.xcassets */,
 				0752E8882BFA5A050073072E /* Preview Content */,
-				0797A9AC2BFD804C0022D874 /* LocationManager.swift */,
 			);
 			path = GolfTrackPro;
 			sourceTree = "<group>";
@@ -94,6 +96,7 @@
 				0752E8922BFA5D150073072E /* HoleScoreView.swift */,
 				0718BB882BFC3A9000A29183 /* DetailView.swift */,
 				0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */,
+				0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				0752E8832BFA5A040073072E /* GolfTrackProApp.swift in Sources */,
 				0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* DetailView.swift in Sources */,
+				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
 				0752E8962BFA6DF10073072E /* Score.swift in Sources */,
 				0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */,
 			);
