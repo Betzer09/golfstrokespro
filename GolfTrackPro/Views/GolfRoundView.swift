@@ -8,7 +8,7 @@ import SwiftUI
 
 struct GolfRoundView: View {
     @State private var scores: [Score] = (1...18).map { Score(swings: [], hole: $0) }
-    @State private var numberOfHoles: Int = 18
+    @State private var numberOfHoles: Int = 9
 
     var body: some View {
         NavigationView {
@@ -29,7 +29,7 @@ struct GolfRoundView: View {
                 HStack {
                     Text("Total Score")
                     Spacer()
-                    Text("\(totalScore())")
+                    Text("\(totalScore())") 
                         .bold()
                 }
                 .padding()
