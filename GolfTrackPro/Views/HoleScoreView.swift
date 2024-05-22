@@ -12,14 +12,15 @@ import SwiftUI
 struct HoleScoreView: View {
     let hole: Int
     @Binding var swings: [Swing]
+    @StateObject private var locationManager = LocationManager()
 
     var body: some View {
         HStack {
             Text("Hole \(hole)")
             Spacer()
-
+            
             Button(action: {
-                print("Location icon tapped for hole \(hole)")
+                locationManager.requestLocationPermissions()
             }) {
                 Image(systemName: "location.fill.viewfinder")
                     .foregroundColor(.blue)
