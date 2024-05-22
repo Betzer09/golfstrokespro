@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Swing: Identifiable {
+@Model
+class Swing {
     let id = UUID()
     let timestamp: Date
     var club: Club?

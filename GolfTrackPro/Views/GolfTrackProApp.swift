@@ -6,12 +6,31 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct GolfTrackProApp: App {
+    @State private var isLoading = true
+
     var body: some Scene {
         WindowGroup {
-            GolfRoundView()
+            if isLoading {
+                LandingView()
+            } else {
+                GolfRoundView()
+            }
+        }
+        .modelContainer(for: [Swing.self, Score.self, Club.self]) { result in
+            switch result {
+            case .success:
+                print("Persistence layer has been configured.")
+                DispatchQueue.main.async {
+                    isLoading = false
+                }
+            case .failure(let error):
+                print("Failed to configure persistence layer. Error: \(error)")
+            }
         }
     }
 }
+

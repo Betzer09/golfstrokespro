@@ -16,6 +16,7 @@
 		0752E8962BFA6DF10073072E /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E8952BFA6DF10073072E /* Score.swift */; };
 		0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9372BFE5F1500A56F1E /* Swing.swift */; };
 		0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9392BFE5F2100A56F1E /* Club.swift */; };
+		0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E93B2BFE677300A56F1E /* LandingView.swift */; };
 		0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */; };
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
@@ -32,6 +33,7 @@
 		0752E8952BFA6DF10073072E /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		0789E9372BFE5F1500A56F1E /* Swing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swing.swift; sourceTree = "<group>"; };
 		0789E9392BFE5F2100A56F1E /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		0789E93B2BFE677300A56F1E /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdjuster.swift; sourceTree = "<group>"; };
 		0797A9AC2BFD804C0022D874 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTrackerView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				0718BB882BFC3A9000A29183 /* DetailView.swift */,
 				0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */,
 				0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */,
+				0789E93B2BFE677300A56F1E /* LandingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
 				0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */,
 				0752E8962BFA6DF10073072E /* Score.swift in Sources */,
+				0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */,
 				0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,8 +344,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -349,9 +354,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.golftrack.GolfTrackPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -369,8 +378,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,9 +388,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.golftrack.GolfTrackPro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

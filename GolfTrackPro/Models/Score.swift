@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Score {
+@Model
+class Score {
     var swings: [Swing]
     let hole: Int
+
+    init(swings: [Swing], hole: Int) {
+        self.swings = swings
+        self.hole = hole
+    }
 }
