@@ -16,10 +16,13 @@ struct Swing: Identifiable {
     let id = UUID()
     let timestamp: Date
     var club: Club?
+    var distance: Double? // Distance in yards
 
-    init(timestamp: Date = Date(), club: Club? = nil) {
+   
+    init(timestamp: Date = Date(), club: Club? = nil, distance: Double? = nil) {
         self.timestamp = timestamp
         self.club = club
+        self.distance = distance
     }
 }
 
