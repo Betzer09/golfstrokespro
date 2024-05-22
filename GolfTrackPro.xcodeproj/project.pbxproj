@@ -31,6 +31,9 @@
 		0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdjuster.swift; sourceTree = "<group>"; };
 		0797A9AC2BFD804C0022D874 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTrackerView.swift; sourceTree = "<group>"; };
+		0797A9B12BFD93510022D874 /* hole-one-tee.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-tee.gpx"; sourceTree = "<group>"; };
+		0797A9B22BFD94510022D874 /* hole-one-short.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-short.gpx"; sourceTree = "<group>"; };
+		0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-mid.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 		0752E8812BFA5A040073072E /* GolfTrackPro */ = {
 			isa = PBXGroup;
 			children = (
+				0797A9B02BFD92CB0022D874 /* GPSMocks */,
 				0797A9AC2BFD804C0022D874 /* LocationManager.swift */,
 				0718BB8A2BFC405400A29183 /* Models */,
 				0752E8942BFA5DB70073072E /* Views */,
@@ -99,6 +103,16 @@
 				0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0797A9B02BFD92CB0022D874 /* GPSMocks */ = {
+			isa = PBXGroup;
+			children = (
+				0797A9B12BFD93510022D874 /* hole-one-tee.gpx */,
+				0797A9B22BFD94510022D874 /* hole-one-short.gpx */,
+				0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */,
+			);
+			path = GPSMocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
