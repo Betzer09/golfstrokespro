@@ -10,11 +10,19 @@ import SwiftData
 
 @Model
 class Score {
-    var swings: [Swing]
+    @Relationship(deleteRule: .cascade, inverse: \Swing.score) var swings: [Swing] = []
     let hole: Int
 
-    init(swings: [Swing], hole: Int) {
-        self.swings = swings
+    init(hole: Int) {
         self.hole = hole
     }
+}
+
+class PreviewConstants {
+    static let score = Score(hole: 1)
+    static let swingData = [
+        Swing(score: score, timestamp: Date()),
+        Swing(score: score, timestamp: Date().addingTimeInterval(300)),
+        Swing(score: score, timestamp: Date().addingTimeInterval(600)),
+    ]
 }

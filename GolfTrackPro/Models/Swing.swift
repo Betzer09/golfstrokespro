@@ -9,16 +9,22 @@ import Foundation
 import SwiftData
 
 @Model
-class Swing {
+class Swing: ObservableObject {
     let id = UUID()
     let timestamp: Date
     var club: Club?
-    var distance: Double? // Distance in yards
+    /// Distance in yards
+    var distance: Double?
+    var score: Score
 
 
-    init(timestamp: Date = Date(), club: Club? = nil, distance: Double? = nil) {
+    init(score: Score,
+         timestamp: Date = Date(),
+         club: Club? = nil,
+         distance: Double? = nil) {
         self.timestamp = timestamp
         self.club = club
         self.distance = distance
+        self.score = score
     }
 }

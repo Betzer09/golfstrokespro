@@ -5,9 +5,12 @@
 //  Created by Austin Betzer on 5/19/24.
 //
 import SwiftUI
+import SwiftData
 
 struct GolfRoundView: View {
-    @State private var scores: [Score] = (1...18).map { Score(swings: [], hole: $0) }
+    @Environment(\.modelContext) var modelContext
+    @State private var scores: [Score] = []
+    @Query(sort: \Score.hole, order: .forward) private var queryiedScores: [Score] = []
     @State private var numberOfHoles: Int = 9
 
     var body: some View {
@@ -20,9 +23,11 @@ struct GolfRoundView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
 
-                List(0..<numberOfHoles, id: \.self) { index in
-                    NavigationLink(destination: DetailView(hole: scores[index].hole, swings: $scores[index].swings)) {
-                        HoleScoreView(hole: scores[index].hole, swings: $scores[index].swings)
+                List(0..<scores.count, id: \.self) { index in
+                    NavigationLink(destination: DetailView(hole: scores[index].hole,
+                                                           swings: $scores[index].swings)) {
+                        HoleScoreView(hole: scores[index].hole,
+                                      score: $scores[index])
                     }
                 }
 
@@ -34,14 +39,27 @@ struct GolfRoundView: View {
                 }
                 .padding()
             }
+            .onAppear(perform: loadScores)
             .onChange(of: numberOfHoles) {
                 updateScores(for: numberOfHoles)
             }
         }
     }
 
+    private func loadScores() {
+        if queryiedScores.isEmpty {
+            print("Creating a new game of scores.")
+            let createdScores = (1...$numberOfHoles.wrappedValue).map { Score(hole: $0) }
+            createdScores.forEach({ modelContext.insert($0) })
+            scores = createdScores
+        } else {
+            print("Loading already existing scores")
+            scores = queryiedScores
+        }
+    }
+
     private func updateScores(for holes: Int) {
-        scores = (1...holes).map { Score(swings: [], hole: $0) }
+//        scores = (1...holes).map { Score(hole: $0) }
     }
 
     func totalScore() -> Int {

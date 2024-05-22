@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LocationTrackerView: View {
     @StateObject private var locationManager = LocationManager()
-    @Binding var swings: [Swing]
     @State private var isTracking = false
+    @Binding var score: Score
 
     var body: some View {
         VStack {
@@ -18,8 +18,8 @@ struct LocationTrackerView: View {
                 if isTracking {
                     locationManager.stopTracking()
                     if let distance = locationManager.currentDistance {
-                        let newSwing = Swing(distance: distance)
-                        swings.append(newSwing)
+                        let newSwing = Swing(score: score, distance: distance)
+                        score.swings.append(newSwing)
                         print("Stopped tracking. Distance: \(distance) yards. New swing added.")
                     }
                 } else {
@@ -45,5 +45,5 @@ struct LocationTrackerView: View {
 
 
 #Preview {
-    LocationTrackerView(swings: .constant([Swing()]))
+    LocationTrackerView(score: .constant(PreviewConstants.score))
 }

@@ -51,10 +51,6 @@ struct DetailView: View {
 
 
 #Preview {
-    let swingData = [
-        Swing(timestamp: Date()),
-        Swing(timestamp: Date().addingTimeInterval(300)),
-        Swing(timestamp: Date().addingTimeInterval(600)),
-    ]
-    return DetailView(hole: 0, swings: .constant(swingData))
+    return DetailView(hole: PreviewConstants.score.hole,
+                      swings: .constant(PreviewConstants.swingData))
 }

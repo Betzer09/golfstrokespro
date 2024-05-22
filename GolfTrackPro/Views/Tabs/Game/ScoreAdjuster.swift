@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ScoreAdjuster: View {
     let hole: Int
-    @Binding var swings: [Swing]
+    @Binding var score: Score
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         HStack {
             Button(action: {
-                if swings.count > 0 {
-                    swings.removeLast()
-                    print("Decreased score for hole \(hole) to \(swings.count)")
+                if score.swings.count > 0, let lastSwing = score.swings.last {
+                    modelContext.delete(lastSwing)
+                    print("Decreased score for hole \(hole) to \(score.swings.count)")
                 }
             }) {
                 Image(systemName: "minus.circle")
@@ -25,13 +26,14 @@ struct ScoreAdjuster: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, 8)
 
-            Text("\(swings.count)")
+            Text("\(score.swings.count)")
                 .frame(width: 40)
                 .multilineTextAlignment(.center)
 
             Button(action: {
-                swings.append(Swing())
-                print("Increased score for hole \(hole) to \(swings.count)")
+                let swing = Swing(score: score)
+                modelContext.insert(swing)
+                print("Increased score for hole \(hole) to \(score.swings.count)")
             }) {
                 Image(systemName: "plus.circle")
                     .foregroundColor(.green)
@@ -43,5 +45,6 @@ struct ScoreAdjuster: View {
 }
 
 #Preview {
-    ScoreAdjuster(hole: 8, swings: .constant([Swing()]))
+    ScoreAdjuster(hole: 8,
+                  score: .constant(PreviewConstants.score))
 }
