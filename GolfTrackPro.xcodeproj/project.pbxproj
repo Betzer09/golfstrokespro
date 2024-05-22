@@ -14,6 +14,8 @@
 		0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E8902BFA5AB10073072E /* GolfRoundView.swift */; };
 		0752E8932BFA5D150073072E /* HoleScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E8922BFA5D150073072E /* HoleScoreView.swift */; };
 		0752E8962BFA6DF10073072E /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752E8952BFA6DF10073072E /* Score.swift */; };
+		0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9372BFE5F1500A56F1E /* Swing.swift */; };
+		0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789E9392BFE5F2100A56F1E /* Club.swift */; };
 		0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */; };
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
@@ -28,6 +30,8 @@
 		0752E8902BFA5AB10073072E /* GolfRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfRoundView.swift; sourceTree = "<group>"; };
 		0752E8922BFA5D150073072E /* HoleScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleScoreView.swift; sourceTree = "<group>"; };
 		0752E8952BFA6DF10073072E /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		0789E9372BFE5F1500A56F1E /* Swing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swing.swift; sourceTree = "<group>"; };
+		0789E9392BFE5F2100A56F1E /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAdjuster.swift; sourceTree = "<group>"; };
 		0797A9AC2BFD804C0022D874 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTrackerView.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				0752E8952BFA6DF10073072E /* Score.swift */,
+				0789E9372BFE5F1500A56F1E /* Swing.swift */,
+				0789E9392BFE5F2100A56F1E /* Club.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,9 +194,11 @@
 				0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */,
 				0752E8932BFA5D150073072E /* HoleScoreView.swift in Sources */,
 				0752E8832BFA5A040073072E /* GolfTrackProApp.swift in Sources */,
+				0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */,
 				0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* DetailView.swift in Sources */,
 				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
+				0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */,
 				0752E8962BFA6DF10073072E /* Score.swift in Sources */,
 				0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */,
 			);
