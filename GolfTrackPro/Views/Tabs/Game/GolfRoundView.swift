@@ -9,7 +9,6 @@ import SwiftData
 
 struct GolfRoundView: View {
     @Environment(\.modelContext) var modelContext
-//    @State private var scores: [Score] = []
     @Query(sort: \Score.hole, order: .forward) private var queryiedScores: [Score] = []
     @State private var numberOfHoles: Int = 9
 

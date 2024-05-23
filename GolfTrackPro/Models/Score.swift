@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 class Score {
-    @Relationship(deleteRule: .cascade, inverse: \Swing.score) var swings: [Swing] = []
+    @Relationship(deleteRule: .cascade) var swings: [Swing] = []
     let hole: Int
 
     init(hole: Int) {

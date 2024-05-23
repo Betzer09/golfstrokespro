@@ -10,7 +10,7 @@ import SwiftUI
 struct LocationTrackerView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var isTracking = false
-    var score: Score
+    @Bindable var score: Score
 
     var body: some View {
         VStack {

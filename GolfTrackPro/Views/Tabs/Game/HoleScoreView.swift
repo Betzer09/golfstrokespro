@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HoleScoreView: View {
     let hole: Int
-    var score: Score
+    @Bindable var score: Score
 
     var body: some View {
         HStack {

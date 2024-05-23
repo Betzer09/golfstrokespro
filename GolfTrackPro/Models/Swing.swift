@@ -15,7 +15,7 @@ class Swing: ObservableObject {
     var club: Club?
     /// Distance in yards
     var distance: Double?
-    var score: Score
+//    var score: Score
 
 
     init(score: Score,
@@ -25,6 +25,6 @@ class Swing: ObservableObject {
         self.timestamp = timestamp
         self.club = club
         self.distance = distance
-        self.score = score
+//        self.score = score
     }
 }
