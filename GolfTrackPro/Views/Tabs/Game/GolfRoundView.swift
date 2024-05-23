@@ -9,7 +9,7 @@ import SwiftData
 
 struct GolfRoundView: View {
     @Environment(\.modelContext) var modelContext
-    @State private var scores: [Score] = []
+//    @State private var scores: [Score] = []
     @Query(sort: \Score.hole, order: .forward) private var queryiedScores: [Score] = []
     @State private var numberOfHoles: Int = 9
 
@@ -23,11 +23,11 @@ struct GolfRoundView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
 
-                List(0..<scores.count, id: \.self) { index in
-                    NavigationLink(destination: DetailView(hole: scores[index].hole,
-                                                           swings: $scores[index].swings)) {
-                        HoleScoreView(hole: scores[index].hole,
-                                      score: $scores[index])
+                List(0..<queryiedScores.count, id: \.self) { index in
+                    NavigationLink(destination: DetailView(hole: queryiedScores[index].hole,
+                                                           swings: queryiedScores[index].swings)) {
+                        HoleScoreView(hole: queryiedScores[index].hole,
+                                      score: queryiedScores[index])
                     }
                 }
 
@@ -51,10 +51,8 @@ struct GolfRoundView: View {
             print("Creating a new game of scores.")
             let createdScores = (1...$numberOfHoles.wrappedValue).map { Score(hole: $0) }
             createdScores.forEach({ modelContext.insert($0) })
-            scores = createdScores
         } else {
             print("Loading already existing scores")
-            scores = queryiedScores
         }
     }
 
@@ -63,7 +61,7 @@ struct GolfRoundView: View {
     }
 
     func totalScore() -> Int {
-        scores.reduce(0) { $0 + $1.swings.count }
+        queryiedScores.reduce(0) { $0 + $1.swings.count }
     }
 }
 

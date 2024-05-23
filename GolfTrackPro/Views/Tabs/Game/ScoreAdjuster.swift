@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScoreAdjuster: View {
     let hole: Int
-    @Binding var score: Score
+    var score: Score
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
@@ -46,5 +46,5 @@ struct ScoreAdjuster: View {
 
 #Preview {
     ScoreAdjuster(hole: 8,
-                  score: .constant(PreviewConstants.score))
+                  score: PreviewConstants.score)
 }

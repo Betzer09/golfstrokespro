@@ -9,7 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
     let hole: Int
-    @Binding var swings: [Swing]
+    var swings: [Swing]
+    @State var selectedClub: Club?
 
     var body: some View {
         VStack {
@@ -17,13 +18,13 @@ struct DetailView: View {
             Text("Score: \(swings.count)")
 
             List {
-                ForEach($swings) { $swing in
+                ForEach(swings) { swing in
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Swing at \(swing.timestamp, formatter: dateFormatter)")
                         }
                         Spacer()
-                        Picker("", selection: $swing.club) {
+                        Picker("", selection: $selectedClub) {
                             Text("Select Club").tag(Club?.none)
                             ForEach(allClubs, id: \.self) { club in
                                 Text(club.type.rawValue.capitalized).tag(Club?.some(club))
@@ -52,5 +53,5 @@ struct DetailView: View {
 
 #Preview {
     return DetailView(hole: PreviewConstants.score.hole,
-                      swings: .constant(PreviewConstants.swingData))
+                      swings: PreviewConstants.swingData, selectedClub: allClubs[0])
 }
