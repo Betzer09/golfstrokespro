@@ -12,7 +12,7 @@ import SwiftData
 class Swing: ObservableObject {
     let id = UUID()
     let timestamp: Date
-    var club: Club?
+    @Relationship(deleteRule: .cascade) var club: Club?
     /// Distance in yards
     var distance: Double?
 //    var score: Score

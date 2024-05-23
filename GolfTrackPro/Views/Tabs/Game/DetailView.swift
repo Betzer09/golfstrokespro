@@ -9,29 +9,29 @@ import SwiftUI
 
 struct DetailView: View {
     let hole: Int
-    var swings: [Swing]
-    @State var selectedClub: Club?
+    @Bindable var score: Score
 
     var body: some View {
         VStack {
             Text("Hole \(hole)")
-            Text("Score: \(swings.count)")
+            Text("Score: \($score.swings.count)")
 
             List {
-                ForEach(swings) { swing in
+                ForEach($score.swings) { swing in
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Swing at \(swing.timestamp, formatter: dateFormatter)")
+                            Text("Swing at \(swing.wrappedValue.timestamp, formatter: dateFormatter)")
                         }
                         Spacer()
-                        Picker("", selection: $selectedClub) {
-                            Text("Select Club").tag(Club?.none)
+                        Picker("", selection: swing.club) {
+                            let text = swing.club.wrappedValue == nil ? "Select Club" : swing.wrappedValue.club!.type.rawValue.capitalized
+                            Text(text).tag(Club?.none)
                             ForEach(allClubs, id: \.self) { club in
                                 Text(club.type.rawValue.capitalized).tag(Club?.some(club))
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
-                        if let distance = swing.distance {
+                        if let distance = swing.distance.wrappedValue {
                             Text("\(Int(distance)) yds")
                                 .font(.caption)
                                 .foregroundColor(.gray)
@@ -53,5 +53,5 @@ struct DetailView: View {
 
 #Preview {
     return DetailView(hole: PreviewConstants.score.hole,
-                      swings: PreviewConstants.swingData, selectedClub: allClubs[0])
+                      score: PreviewConstants.score)
 }

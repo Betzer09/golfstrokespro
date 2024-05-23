@@ -24,7 +24,7 @@ struct GolfRoundView: View {
 
                 List(0..<queryiedScores.count, id: \.self) { index in
                     NavigationLink(destination: DetailView(hole: queryiedScores[index].hole,
-                                                           swings: queryiedScores[index].swings)) {
+                                                           score: queryiedScores[index])) {
                         HoleScoreView(hole: queryiedScores[index].hole,
                                       score: queryiedScores[index])
                     }
