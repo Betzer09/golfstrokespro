@@ -24,6 +24,7 @@
 		0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */; };
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
+		07A674CF2C000B96005CC97F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674CE2C000B96005CC97F /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0797A9B12BFD93510022D874 /* hole-one-tee.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-tee.gpx"; sourceTree = "<group>"; };
 		0797A9B22BFD94510022D874 /* hole-one-short.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-short.gpx"; sourceTree = "<group>"; };
 		0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-mid.gpx"; sourceTree = "<group>"; };
+		07A674CE2C000B96005CC97F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0752E8952BFA6DF10073072E /* Score.swift */,
 				0789E9372BFE5F1500A56F1E /* Swing.swift */,
 				0789E9392BFE5F2100A56F1E /* Club.swift */,
+				07A674CE2C000B96005CC97F /* Game.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				0752E8912BFA5AB10073072E /* GolfRoundView.swift in Sources */,
 				0789E9442BFE6D5F00A56F1E /* StatsView.swift in Sources */,
 				0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */,
+				07A674CF2C000B96005CC97F /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

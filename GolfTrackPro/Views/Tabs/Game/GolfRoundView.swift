@@ -9,12 +9,12 @@ import SwiftData
 
 struct GolfRoundView: View {
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Score.hole, order: .forward) private var queryiedScores: [Score] = []
-    @State private var numberOfHoles: Int = 9
-
+    @Query(sort: \Game.createdAt, order: .forward) private var queryiedGames: [Game] = []
+    @State private var numberOfHoles: Int = 18
     var body: some View {
         NavigationView {
             VStack {
+
                 Picker("Number of Holes", selection: $numberOfHoles) {
                     Text("9 Holes").tag(9)
                     Text("18 Holes").tag(18)
@@ -22,11 +22,12 @@ struct GolfRoundView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
 
-                List(0..<queryiedScores.count, id: \.self) { index in
-                    NavigationLink(destination: DetailView(hole: queryiedScores[index].hole,
-                                                           score: queryiedScores[index])) {
-                        HoleScoreView(hole: queryiedScores[index].hole,
-                                      score: queryiedScores[index])
+                let scores = queryiedGames.first?.scores ?? []
+                List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
+                    NavigationLink(destination: DetailView(hole: score.hole,
+                                                           score: score)) {
+                        HoleScoreView(hole: score.hole,
+                                      score: score)
                     }
                 }
 
@@ -39,28 +40,29 @@ struct GolfRoundView: View {
                 .padding()
             }
             .onAppear(perform: loadScores)
-            .onChange(of: numberOfHoles) {
-                updateScores(for: numberOfHoles)
-            }
         }
     }
 
     private func loadScores() {
-        if queryiedScores.isEmpty {
+        if queryiedGames.isEmpty {
             print("Creating a new game of scores.")
-            let createdScores = (1...$numberOfHoles.wrappedValue).map { Score(hole: $0) }
-            createdScores.forEach({ modelContext.insert($0) })
-        } else {
-            print("Loading already existing scores")
+            startGame()
         }
     }
 
-    private func updateScores(for holes: Int) {
-//        scores = (1...holes).map { Score(hole: $0) }
+    private func startGame() {
+        let game = Game()
+        let scores = (1...$numberOfHoles.wrappedValue).map { Score(game:game, hole: $0) }
+        game.scores = scores
+        modelContext.insert(game)
     }
 
     func totalScore() -> Int {
-        queryiedScores.reduce(0) { $0 + $1.swings.count }
+        if let game = queryiedGames.first {
+            return game.scores.reduce(0) { $0 + $1.swings.count }
+        } else {
+            return 0
+        }
     }
 }
 

@@ -20,7 +20,7 @@ struct GolfTrackProApp: App {
                 MainTabView()
             }
         }
-        .modelContainer(for: [Swing.self, Score.self, Club.self]) { result in
+        .modelContainer(for: [Game.self, Swing.self, Score.self, Club.self]) { result in
             switch result {
             case .success:
                 print("Persistence layer has been configured.")
