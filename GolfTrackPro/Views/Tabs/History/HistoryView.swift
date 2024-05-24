@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+import SwiftUI
+
 struct HistoryView: View {
     @Environment(\.modelContext) var modelContext
     @Query(filter: #Predicate<Game> { game in
@@ -18,37 +20,24 @@ struct HistoryView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(completedGames) { game in
-                    NavigationLink(destination: CompletedGameDetailView(game: game)) {
-                        VStack(alignment: .leading) {
-                            Text("Game on \(game.createdAt, formatter: dateFormatter)")
-                                .font(.headline)
-                            Text("Score: \(totalScore(for: game))")
-                                .font(.subheadline)
-                        }
-                    }
-                }
-                .onDelete { indexSet in
-                    if let index = indexSet.first {
-                        gameToDelete = completedGames[index]
-                        showDeleteAlert = true
-                    }
+            Group {
+                if completedGames.isEmpty {
+                    let noHistoryText = "It looks like you haven't completed any games yet. Start playing to see your game history here."
+                    ContentUnavailableView("No Game History",
+                                           systemImage: "golfclub", 
+                                           description: Text(noHistoryText))
+
+                } else {
+                    CompletedGamesList(
+                        completedGames: completedGames,
+                        showDeleteAlert: $showDeleteAlert,
+                        gameToDelete: $gameToDelete,
+                        totalScore: totalScore,
+                        dateFormatter: dateFormatter
+                    )
                 }
             }
             .navigationTitle("Game History")
-            .alert(isPresented: $showDeleteAlert) {
-                Alert(
-                    title: Text("Delete Game"),
-                    message: Text("Are you sure you want to delete this game?"),
-                    primaryButton: .destructive(Text("Delete")) {
-                        if let game = gameToDelete {
-                            modelContext.delete(game)
-                        }
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
         }
     }
 
@@ -63,6 +52,7 @@ private let dateFormatter: DateFormatter = {
     formatter.timeStyle = .short
     return formatter
 }()
+
 
 #Preview {
     HistoryView()

@@ -27,6 +27,7 @@
 		07A674CF2C000B96005CC97F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674CE2C000B96005CC97F /* Game.swift */; };
 		07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */; };
 		07A674D42C00E833005CC97F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D32C00E833005CC97F /* View+Extensions.swift */; };
+		07A674D62C00EB4F005CC97F /* CompleteGameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D52C00EB4F005CC97F /* CompleteGameList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		07A674CE2C000B96005CC97F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameDetailView.swift; sourceTree = "<group>"; };
 		07A674D32C00E833005CC97F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		07A674D52C00EB4F005CC97F /* CompleteGameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteGameList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				0789E9412BFE6D5700A56F1E /* HistoryView.swift */,
 				07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */,
+				07A674D52C00EB4F005CC97F /* CompleteGameList.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A674D62C00EB4F005CC97F /* CompleteGameList.swift in Sources */,
 				0797A9AB2BFD7F3B0022D874 /* ScoreAdjuster.swift in Sources */,
 				0752E8932BFA5D150073072E /* HoleScoreView.swift in Sources */,
 				0752E8832BFA5A040073072E /* GolfTrackProApp.swift in Sources */,
