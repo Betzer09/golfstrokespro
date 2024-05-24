@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     let hole: Int
     @Bindable var score: Score
+    var isEditable: Bool
 
     var body: some View {
         VStack {
@@ -23,14 +24,19 @@ struct DetailView: View {
                             Text("Swing at \(swing.wrappedValue.timestamp, formatter: dateFormatter)")
                         }
                         Spacer()
-                        Picker("", selection: swing.club) {
-                            let text = swing.club.wrappedValue == nil ? "Select Club" : swing.wrappedValue.club!.type.rawValue.capitalized
-                            Text(text).tag(Club?.none)
-                            ForEach(allClubs, id: \.self) { club in
-                                Text(club.type.rawValue.capitalized).tag(Club?.some(club))
+                        if isEditable {
+                            Picker("", selection: swing.club) {
+                                let text = swing.club.wrappedValue == nil ? "Select Club" : swing.wrappedValue.club!.type.rawValue.capitalized
+                                Text(text).tag(Club?.none)
+                                ForEach(allClubs, id: \.self) { club in
+                                    Text(club.type.rawValue.capitalized).tag(Club?.some(club))
+                                }
                             }
+                            .pickerStyle(MenuPickerStyle())
+                        } else {
+                            Text(swing.club.wrappedValue?.type.rawValue.capitalized ?? "No Club")
+                                .foregroundColor(.gray)
                         }
-                        .pickerStyle(MenuPickerStyle())
                         if let distance = swing.distance.wrappedValue {
                             Text("\(Int(distance)) yds")
                                 .font(.caption)
@@ -49,9 +55,6 @@ struct DetailView: View {
     }
 }
 
-
-
 #Preview {
-    return DetailView(hole: PreviewConstants.score.hole,
-                      score: PreviewConstants.score)
+    DetailView(hole: 1, score: PreviewConstants.score, isEditable: true)
 }

@@ -20,12 +20,4 @@ class Game: ObservableObject {
         self.completedAt = completedAt
         self.scores = scores
     }
-
-//    @discardableResult
-//    func startGame(withNumberOfHoles holes: Int) -> Self {
-//        let scores = (1...holes).map { Score(hole: $0) }
-//        let game: Game = .init(scores: scores)
-//        modelContext?.insert(game)
-//        return game
-//    }
 }

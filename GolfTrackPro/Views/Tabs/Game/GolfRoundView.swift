@@ -20,7 +20,9 @@ struct GolfRoundView: View {
             VStack {
                 let scores = queryiedGames.first?.scores ?? []
                 List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                    NavigationLink(destination: DetailView(hole: score.hole, score: score)) {
+                    NavigationLink(destination: DetailView(hole: score.hole,
+                                                           score: score,
+                                                           isEditable: true)) {
                         HoleScoreView(hole: score.hole, score: score)
                     }
                 }
