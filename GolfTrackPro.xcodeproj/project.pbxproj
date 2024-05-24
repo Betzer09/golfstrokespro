@@ -25,6 +25,7 @@
 		0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AC2BFD804C0022D874 /* LocationManager.swift */; };
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
 		07A674CF2C000B96005CC97F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674CE2C000B96005CC97F /* Game.swift */; };
+		07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		0797A9B22BFD94510022D874 /* hole-one-short.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-short.gpx"; sourceTree = "<group>"; };
 		0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-mid.gpx"; sourceTree = "<group>"; };
 		07A674CE2C000B96005CC97F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +134,9 @@
 		0789E9402BFE6D3700A56F1E /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				07A674D02C0028FE005CC97F /* History */,
 				0789E9482BFE6DA100A56F1E /* Game */,
 				0789E93E2BFE6D2200A56F1E /* MainTabView.swift */,
-				0789E9412BFE6D5700A56F1E /* HistoryView.swift */,
 				0789E9432BFE6D5F00A56F1E /* StatsView.swift */,
 				0789E9452BFE6D6900A56F1E /* ProfileView.swift */,
 			);
@@ -161,6 +163,15 @@
 				0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */,
 			);
 			path = GPSMocks;
+			sourceTree = "<group>";
+		};
+		07A674D02C0028FE005CC97F /* History */ = {
+			isa = PBXGroup;
+			children = (
+				0789E9412BFE6D5700A56F1E /* HistoryView.swift */,
+				07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +251,7 @@
 				0789E9422BFE6D5700A56F1E /* HistoryView.swift in Sources */,
 				0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* DetailView.swift in Sources */,
+				07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */,
 				0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */,
 				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
 				0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */,
