@@ -9,13 +9,11 @@ import SwiftData
 
 struct GolfRoundView: View {
     @Environment(\.modelContext) var modelContext
-    // TODO: Muliple games
-    // I'm going to have to figure out some sort of flow if there are
-    // more than one games returned.
     @Query(filter: #Predicate<Game> { game in
         game.completedAt == nil
     }, sort: \Game.createdAt, order: .reverse) private var queryiedGames: [Game]
     private var numberOfHoles: Int = 18
+    @State private var showEndGameAlert = false
 
     var body: some View {
         NavigationView {
@@ -36,10 +34,22 @@ struct GolfRoundView: View {
                 .padding()
             }
             .navigationTitle("⛳️ GolfTrack Pro")
-            .navigationBarItems(trailing: Button(action: endGame) {
+            .navigationBarItems(trailing: Button(action: {
+                showEndGameAlert = true
+            }) {
                 Text("End Game")
                     .foregroundColor(.red)
             })
+            .alert(isPresented: $showEndGameAlert) {
+                Alert(
+                    title: Text("End Game"),
+                    message: Text("Are you sure you want to end the game?"),
+                    primaryButton: .destructive(Text("End Game")) {
+                        endGame()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
             .onAppear(perform: loadScores)
         }
     }
@@ -60,8 +70,9 @@ struct GolfRoundView: View {
     }
 
     private func endGame() {
-        let game = queryiedGames.first
-        game?.completedAt = Date()
+        if let game = queryiedGames.first {
+            game.completedAt = Date()
+        }
         startGame()
     }
 
