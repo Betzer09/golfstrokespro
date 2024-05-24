@@ -26,6 +26,7 @@
 		0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */; };
 		07A674CF2C000B96005CC97F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674CE2C000B96005CC97F /* Game.swift */; };
 		07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */; };
+		07A674D42C00E833005CC97F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674D32C00E833005CC97F /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		0797A9B32BFD94AE0022D874 /* hole-one-mid.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "hole-one-mid.gpx"; sourceTree = "<group>"; };
 		07A674CE2C000B96005CC97F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameDetailView.swift; sourceTree = "<group>"; };
+		07A674D32C00E833005CC97F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				0752E8942BFA5DB70073072E /* Views */,
 				0752E8862BFA5A050073072E /* Assets.xcassets */,
 				0752E8882BFA5A050073072E /* Preview Content */,
+				07A674D32C00E833005CC97F /* View+Extensions.swift */,
 			);
 			path = GolfTrackPro;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */,
 				0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */,
 				0797A9AF2BFD91EA0022D874 /* LocationTrackerView.swift in Sources */,
+				07A674D42C00E833005CC97F /* View+Extensions.swift in Sources */,
 				0789E93A2BFE5F2100A56F1E /* Club.swift in Sources */,
 				0752E8962BFA6DF10073072E /* Score.swift in Sources */,
 				0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */,

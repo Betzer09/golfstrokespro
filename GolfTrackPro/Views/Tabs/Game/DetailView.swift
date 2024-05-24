@@ -11,6 +11,8 @@ struct DetailView: View {
     let hole: Int
     @Bindable var score: Score
     var isEditable: Bool
+    @State private var showDeleteAlert = false
+    @State private var swingToDelete: Swing?
 
     var body: some View {
         VStack {
@@ -44,6 +46,28 @@ struct DetailView: View {
                         }
                     }
                 }
+                .if(isEditable) { list in
+                    list.onDelete { indexSet in
+                        if let index = indexSet.first {
+                            swingToDelete = score.swings[index]
+                            showDeleteAlert = true
+                        }
+                    }
+                }
+            }
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Swing"),
+                    message: Text("Are you sure you want to delete this swing?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let swing = swingToDelete {
+                            if let index = score.swings.firstIndex(of: swing) {
+                                score.swings.remove(at: index)
+                            }
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
     }
@@ -58,3 +82,4 @@ struct DetailView: View {
 #Preview {
     DetailView(hole: 1, score: PreviewConstants.score, isEditable: true)
 }
+
