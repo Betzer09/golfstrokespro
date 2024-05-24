@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     @Published var startLocation: CLLocation?
     @Published var currentDistance: Double?
     @Published var isLocationMonitoringEnabled: Bool = false
