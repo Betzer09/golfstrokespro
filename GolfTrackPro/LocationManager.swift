@@ -8,16 +8,16 @@
 import Foundation
 import CoreLocation
 
-import CoreLocation
-
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private var locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     @Published var startLocation: CLLocation?
     @Published var currentDistance: Double?
+    @Published var isLocationMonitoringEnabled: Bool = false
 
     override init() {
         super.init()
         locationManager.delegate = self
+        updateLocationMonitoringStatus()
     }
 
     func requestLocationPermissions() {
@@ -46,15 +46,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // Handle changes in authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            print("Location permissions not determined")
-        case .restricted, .denied:
-            print("Location permissions denied")
-        case .authorizedWhenInUse, .authorizedAlways:
-            print("Location permissions granted")
-        @unknown default:
-            break
-        }
+        updateLocationMonitoringStatus()
+    }
+
+    private func updateLocationMonitoringStatus() {
+        let status = locationManager.authorizationStatus
+        isLocationMonitoringEnabled = (status == .authorizedWhenInUse || status == .authorizedAlways)
     }
 }
