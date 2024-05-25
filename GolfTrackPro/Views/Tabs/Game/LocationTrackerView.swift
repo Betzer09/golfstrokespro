@@ -12,13 +12,15 @@ struct LocationTrackerView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var isTracking = false
     @State private var enableLocationAlert = false
+    @State private var showClubPicker = false
+    @State private var selectedClub: Club? = nil
 
     @Bindable var score: Score
 
     var body: some View {
         VStack {
             Button(action: {
-                requestLocationPermissions()
+                handleLocationButtonTapped()
             }) {
                 Image(systemName: isTracking ? "stop.circle.fill" : "location.fill.viewfinder")
                     .foregroundColor(.blue)
@@ -32,6 +34,12 @@ struct LocationTrackerView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
+            .sheet(isPresented: $showClubPicker) {
+                ClubPicker(selectedClub: $selectedClub, onClubSelected: {
+                    startTracking()
+                    showClubPicker = false
+                })
+            }
 
             if isTracking, let distance = locationManager.currentDistance {
                 Text("\(Int(distance)) yds")
@@ -41,30 +49,36 @@ struct LocationTrackerView: View {
         }
     }
 
-    private func requestLocationPermissions() {
-        let authorizationStatus = locationManager.locationManager.authorizationStatus
-        if authorizationStatus == .notDetermined {
-            locationManager.requestLocationPermissions()
-        } else if locationManager.isLocationMonitoringEnabled {
-            trackClubDistance()
+    private func handleLocationButtonTapped() {
+        if isTracking {
+            stopTracking()
         } else {
-            enableLocationAlert = true
+            let authorizationStatus = locationManager.locationManager.authorizationStatus
+            if authorizationStatus == .notDetermined {
+                locationManager.requestLocationPermissions()
+            } else if locationManager.isLocationMonitoringEnabled {
+                showClubPicker = true
+            } else {
+                enableLocationAlert = true
+            }
         }
     }
 
-    private func trackClubDistance() {
-        if isTracking {
-            locationManager.stopTracking()
-            if let distance = locationManager.currentDistance {
-                let newSwing = Swing(score: score, distance: distance)
-                score.swings.append(newSwing)
-                print("Stopped tracking. Distance: \(distance) yards. New swing added.")
-            }
-        } else {
-            locationManager.startTracking()
-            print("Started tracking")
+    private func startTracking() {
+        guard let club = selectedClub else { return }
+        locationManager.startTracking()
+        isTracking = true
+        print("Started tracking")
+    }
+
+    private func stopTracking() {
+        locationManager.stopTracking()
+        if let distance = locationManager.currentDistance {
+            let newSwing = Swing(score: score, club: selectedClub, distance: distance)
+            score.swings.append(newSwing)
+            print("Stopped tracking. Distance: \(distance) yards. New swing added.")
         }
-        isTracking.toggle()
+        isTracking = false
     }
 }
 

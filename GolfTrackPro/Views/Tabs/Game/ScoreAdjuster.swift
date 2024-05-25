@@ -13,18 +13,6 @@ struct ScoreAdjuster: View {
 
     var body: some View {
         HStack {
-            Button(action: {
-                if score.swings.count > 0 {
-                    score.swings.removeLast()
-                    print("Decreased score for hole \(hole) to \(score.swings.count)")
-                }
-            }) {
-                Image(systemName: "minus.circle")
-                    .foregroundColor(.red)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .padding(.trailing, 8)
-
             Text("\(score.swings.count)")
                 .frame(width: 40)
                 .multilineTextAlignment(.center)

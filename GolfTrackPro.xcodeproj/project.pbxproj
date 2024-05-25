@@ -32,6 +32,7 @@
 		07A674DB2C01630D005CC97F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 07A674DA2C01630D005CC97F /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		07A674DD2C01630D005CC97F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 07A674DC2C01630D005CC97F /* FirebaseCrashlytics */; };
 		07A674F42C016552005CC97F /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 07A674F32C016552005CC97F /* FirebasePerformance */; };
+		07A674F72C02AF0F005CC97F /* ClubPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F62C02AF0F005CC97F /* ClubPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		07A674D32C00E833005CC97F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		07A674D52C00EB4F005CC97F /* CompleteGameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteGameList.swift; sourceTree = "<group>"; };
 		07A674D72C016245005CC97F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07A674F62C02AF0F005CC97F /* ClubPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				0718BB882BFC3A9000A29183 /* DetailView.swift */,
 				0797A9AA2BFD7F3B0022D874 /* ScoreAdjuster.swift */,
 				0797A9AE2BFD91EA0022D874 /* LocationTrackerView.swift */,
+				07A674F62C02AF0F005CC97F /* ClubPicker.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				0789E9382BFE5F1500A56F1E /* Swing.swift in Sources */,
 				0789E9422BFE6D5700A56F1E /* HistoryView.swift in Sources */,
 				0797A9AD2BFD804C0022D874 /* LocationManager.swift in Sources */,
+				07A674F72C02AF0F005CC97F /* ClubPicker.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* DetailView.swift in Sources */,
 				07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */,
 				0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */,
