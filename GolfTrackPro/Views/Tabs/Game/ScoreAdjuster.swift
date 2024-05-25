@@ -14,6 +14,7 @@ struct ScoreAdjuster: View {
     var body: some View {
         HStack {
             Button(action: {
+                fatalError()
                 if score.swings.count > 0 {
                     score.swings.removeLast()
                     print("Decreased score for hole \(hole) to \(score.swings.count)")

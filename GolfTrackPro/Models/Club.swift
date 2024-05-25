@@ -39,12 +39,31 @@ class Club: Codable {
     }
 }
 
+//// Need to add the following commented values as club selections
+//enum ClubType: String, CaseIterable, Identifiable, Codable {
+//    case wood // 1-10 selection
+//    case iron // 1-9, P selection
+//    case hybrid // 1-10 selection
+//    case wedge // ptiching, gap, sand lob 46-72
+//    case putter
+//
+//    var id: String {rawValue}
+//}
+
 // Need to add the following commented values as club selections
 enum ClubType: String, CaseIterable, Identifiable, Codable {
-    case wood // 1-10 selection
-    case iron // 1-9, P selection
-    case hybrid // 1-10 selection
-    case wedge // ptiching, gap, sand lob 46-72
+    case dr
+    case threeWood = "3w"
+    case twoHybrid = "2Hy"
+    case sixIron = "6i"
+    case sevenIron = "7i"
+    case eightIron = "8i"
+    case nineIron = "9i"
+    case pitchingWege = "Pw"
+    case sandWedge = "Sw"
+    case wedgeFiftyTwo = "W-52"
+    case wedgeFiftySix = "W-56"
+    case wedgeSixty = "W-60"
     case putter
 
     var id: String {rawValue}
