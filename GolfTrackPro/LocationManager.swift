@@ -5,8 +5,8 @@
 //  Created by Austin Betzer on 5/21/24.
 //
 
-import Foundation
 import CoreLocation
+import SwiftUI
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
@@ -17,6 +17,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = kCLDistanceFilterNone
         updateLocationMonitoringStatus()
     }
 
@@ -44,7 +46,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
 
-    // Handle changes in authorization status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         updateLocationMonitoringStatus()
     }

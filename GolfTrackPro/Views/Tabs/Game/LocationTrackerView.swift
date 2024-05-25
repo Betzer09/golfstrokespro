@@ -65,7 +65,7 @@ struct LocationTrackerView: View {
     }
 
     private func startTracking() {
-        guard let club = selectedClub else { return }
+        guard let _ = selectedClub else { return }
         locationManager.startTracking()
         isTracking = true
         print("Started tracking")
