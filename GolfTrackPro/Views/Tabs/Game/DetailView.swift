@@ -20,7 +20,7 @@ struct DetailView: View {
             Text("Score: \($score.swings.count)")
 
             List {
-                ForEach($score.swings) { swing in
+                ForEach(sortedSwingBindings()) { swing in
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Swing at \(swing.wrappedValue.timestamp, formatter: dateFormatter)")
@@ -69,6 +69,14 @@ struct DetailView: View {
                     secondaryButton: .cancel()
                 )
             }
+        }
+    }
+
+    private func sortedSwingBindings() -> [Binding<Swing>] {
+        let sortedSwings = score.swings.sorted { $0.timestamp < $1.timestamp }
+        return sortedSwings.map { swing in
+            let index = score.swings.firstIndex(of: swing)!
+            return $score.swings[index]
         }
     }
 
