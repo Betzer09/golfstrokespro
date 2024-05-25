@@ -15,7 +15,7 @@ struct CompletedGameDetailView: View {
     var body: some View {
         VStack {
             List(game.scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                NavigationLink(destination: DetailView(hole: score.hole, 
+                NavigationLink(destination: HoleDetailView(hole: score.hole, 
                                                        score: score, 
                                                        isEditable: false)) {
                     HStack {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailView: View {
+struct HoleDetailView: View {
     let hole: Int
     @Bindable var score: Score
     var isEditable: Bool
@@ -88,6 +88,6 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(hole: 1, score: PreviewConstants.score, isEditable: true)
+    HoleDetailView(hole: 1, score: PreviewConstants.score, isEditable: true)
 }
 

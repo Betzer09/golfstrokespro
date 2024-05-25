@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 
-struct LocationTrackerView: View {
+struct HoleLocationTrackingView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var isTracking = false
     @State private var enableLocationAlert = false
@@ -84,5 +84,5 @@ struct LocationTrackerView: View {
 
 
 #Preview {
-    LocationTrackerView(score: PreviewConstants.score)
+    HoleLocationTrackingView(score: PreviewConstants.score)
 }

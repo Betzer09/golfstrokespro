@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScoreAdjuster: View {
+struct HoleScoreAdjuster: View {
     let hole: Int
     @Bindable var score: Score
 
@@ -31,6 +31,6 @@ struct ScoreAdjuster: View {
 }
 
 #Preview {
-    ScoreAdjuster(hole: 8,
+    HoleScoreAdjuster(hole: 8,
                   score: PreviewConstants.score)
 }

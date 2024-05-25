@@ -10,7 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            GolfRoundView()
+            GamePlayView()
                 .tabItem {
                     Label("Game", systemImage: "figure.golf")
                 }

@@ -1,5 +1,5 @@
 //
-//  GolfRoundView.swift
+//  GamePlayView.swift
 //  GolfTrackPro
 //
 //  Created by Austin Betzer on 5/19/24.
@@ -7,7 +7,7 @@
 import SwiftUI
 import SwiftData
 
-struct GolfRoundView: View {
+struct GamePlayView: View {
     @Environment(\.modelContext) var modelContext
     @Query(filter: #Predicate<Game> { game in
         game.completedAt == nil
@@ -20,7 +20,7 @@ struct GolfRoundView: View {
             VStack {
                 let scores = queryiedGames.first?.scores ?? []
                 List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                    NavigationLink(destination: DetailView(hole: score.hole,
+                    NavigationLink(destination: HoleDetailView(hole: score.hole,
                                                            score: score,
                                                            isEditable: true)) {
                         HoleScoreView(hole: score.hole, score: score)
@@ -88,5 +88,5 @@ struct GolfRoundView: View {
 }
 
 #Preview {
-    GolfRoundView()
+    GamePlayView()
 }

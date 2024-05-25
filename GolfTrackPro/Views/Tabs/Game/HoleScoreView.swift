@@ -15,8 +15,8 @@ struct HoleScoreView: View {
         HStack {
             Text("Hole \(hole)")
             Spacer()
-            LocationTrackerView(score: score)
-            ScoreAdjuster(hole: hole, score: score)
+            HoleLocationTrackingView(score: score)
+            HoleScoreAdjuster(hole: hole, score: score)
         }
     }
 }
