@@ -17,6 +17,10 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var nearbyGolfCourses: [MKMapItem] = []
 
+    private let userDefaults = UserDefaults.standard
+    private let cacheKey = "cachedGolfCourses"
+    private let locationKey = "lastKnownLocation"
+
     override init() {
         super.init()
         locationManager.delegate = self
@@ -65,6 +69,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return
         }
 
+        // Check for significant location change
+        if let lastKnownLocation = getLastKnownLocation(),
+           CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude).distance(from: lastKnownLocation) < 1609 {
+            // Return cached data if within 1 mile
+            if let cachedGolfCourses = getCachedGolfCourses() {
+                self.nearbyGolfCourses = cachedGolfCourses
+                completion(cachedGolfCourses)
+                return
+            }
+        }
+
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = "Golf Course"
         let threeMiles: Double = 1609 * 3
@@ -87,15 +102,59 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             let filteredMapItems = response.mapItems.filter { item in
                 if let location = item.placemark.location {
                     let distance = location.distance(from: CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))
-                    return distance <= threeMiles 
+                    return distance <= threeMiles
                 }
                 return false
             }
 
             DispatchQueue.main.async {
                 self.nearbyGolfCourses = filteredMapItems
+                self.cacheGolfCourses(filteredMapItems)
+                self.cacheLastKnownLocation(CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude))
                 completion(filteredMapItems)
             }
         }
+    }
+
+    private func cacheGolfCourses(_ golfCourses: [MKMapItem]) {
+        do {
+            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: golfCourses, requiringSecureCoding: false)
+            userDefaults.set(encodedData, forKey: cacheKey)
+        } catch {
+            print("Failed to cache golf courses: \(error.localizedDescription)")
+        }
+    }
+
+    private func getCachedGolfCourses() -> [MKMapItem]? {
+        guard let data = userDefaults.data(forKey: cacheKey) else { return nil }
+        do {
+            if let golfCourses = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, MKMapItem.self], from: data) as? [MKMapItem] {
+                return golfCourses
+            }
+        } catch {
+            print("Failed to retrieve cached golf courses: \(error.localizedDescription)")
+        }
+        return nil
+    }
+
+    private func cacheLastKnownLocation(_ location: CLLocation) {
+        do {
+            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false)
+            userDefaults.set(encodedData, forKey: locationKey)
+        } catch {
+            print("Failed to cache last known location: \(error.localizedDescription)")
+        }
+    }
+
+    private func getLastKnownLocation() -> CLLocation? {
+        guard let data = userDefaults.data(forKey: locationKey) else { return nil }
+        do {
+            if let location = try NSKeyedUnarchiver.unarchivedObject(ofClass: CLLocation.self, from: data) {
+                return location
+            }
+        } catch {
+            print("Failed to retrieve cached last known location: \(error.localizedDescription)")
+        }
+        return nil
     }
 }
