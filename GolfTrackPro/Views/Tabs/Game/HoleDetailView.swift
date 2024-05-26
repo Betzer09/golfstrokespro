@@ -23,7 +23,7 @@ struct HoleDetailView: View {
                 ForEach(sortedSwingBindings()) { swing in
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Swing at \(swing.wrappedValue.timestamp, formatter: dateFormatter)")
+                            Text("Swung \(swing.wrappedValue.timestamp, formatter: dateFormatter)")
                         }
                         Spacer()
                         if isEditable {
@@ -82,7 +82,7 @@ struct HoleDetailView: View {
 
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
+        formatter.timeStyle = .medium
         return formatter
     }
 }

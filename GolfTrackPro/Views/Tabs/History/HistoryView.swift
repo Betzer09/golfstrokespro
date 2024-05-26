@@ -8,8 +8,6 @@
 import SwiftUI
 import SwiftData
 
-import SwiftUI
-
 struct HistoryView: View {
     @Environment(\.modelContext) var modelContext
     @Query(filter: #Predicate<Game> { game in

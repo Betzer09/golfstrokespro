@@ -19,6 +19,7 @@ struct GamePlayView: View {
     @State private var showToast = false
     @State private var toastMessage = ""
     @State private var previousHole: Score?
+    @State private var isInitialized = false
 
     var body: some View {
         NavigationView {
@@ -35,12 +36,9 @@ struct GamePlayView: View {
 
                     let scores = game.scores
                     List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)
-                                        .onAppear {
-                                            lockPreviousHole(score: score)
-                                        }) {
+                        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)) {
                             HoleScoreView(hole: score.hole, score: score, onSwingAdded: {
-                                lockPreviousHole(score: score)
+                                lockPreviousHoleIfNeeded(score: score)
                             })
                         }
                     }
@@ -71,7 +69,12 @@ struct GamePlayView: View {
                     secondaryButton: .cancel()
                 )
             }
-            .onAppear(perform: loadScores)
+            .onAppear {
+                if !isInitialized {
+                    initializePreviousHole()
+                    isInitialized = true
+                }
+            }
             .overlay(
                 showToast ? AnyView(Toast(message: toastMessage)) : AnyView(EmptyView()),
                 alignment: .top
@@ -79,14 +82,13 @@ struct GamePlayView: View {
         }
     }
 
-    private func loadScores() {
-        print("Number of persisted games: \(queryiedGames.count)")
-        if queryiedGames.isEmpty {
-            print("No ongoing games. Please start a new game.")
+    private func initializePreviousHole() {
+        if let game = queryiedGames.first {
+            previousHole = game.scores.max(by: { $0.swings.last?.timestamp ?? Date.distantPast < $1.swings.last?.timestamp ?? Date.distantPast })
         }
     }
 
-    private func lockPreviousHole(score: Score) {
+    private func lockPreviousHoleIfNeeded(score: Score) {
         if let previousHole = previousHole, previousHole.hole != score.hole {
             previousHole.isLocked = true
             showToast(message: "Hole \(previousHole.hole) was locked. Swipe to unlock if needed.")
@@ -97,7 +99,7 @@ struct GamePlayView: View {
     private func showToast(message: String) {
         toastMessage = message
         showToast = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             withAnimation {
                 showToast = false
             }
@@ -118,6 +120,7 @@ struct GamePlayView: View {
         }
     }
 }
+
 
 #Preview {
     GamePlayView()

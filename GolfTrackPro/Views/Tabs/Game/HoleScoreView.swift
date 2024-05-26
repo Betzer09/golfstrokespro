@@ -14,21 +14,12 @@ struct HoleScoreView: View {
     var onSwingAdded: () -> Void
 
     var body: some View {
-        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)
-                        .onAppear {
-                            if !score.isLocked {
-                                score.isLocked = true
-                                onSwingAdded()
-                            }
-                        }) {
-            HStack {
-                Text("Hole \(hole)")
-                Spacer()
-                HoleLocationTrackingView(score: score, showLockAlert: $showLockAlert)
-                HoleScoreAdjuster(hole: hole, score: score, showLockAlert: $showLockAlert, onSwingAdded: onSwingAdded)
-            }
+        HStack {
+            Text("Hole \(hole)")
+            Spacer()
+            HoleLocationTrackingView(score: score, showLockAlert: $showLockAlert)
+            HoleScoreAdjuster(hole: hole, score: score, showLockAlert: $showLockAlert, onSwingAdded: onSwingAdded)
         }
-        .background(Color.white) // Ensure the swipe action area is visible
         .swipeActions {
             if score.isLocked {
                 Button("Unlock") {
