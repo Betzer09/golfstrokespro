@@ -6,14 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainTabView: View {
+    @Query(filter: #Predicate<Game> { game in
+        game.completedAt == nil
+    }, sort: \Game.createdAt, order: .reverse) private var queryiedGames: [Game]
+
     var body: some View {
         TabView {
-            GamePlayView()
-                .tabItem {
-                    Label("Game", systemImage: "figure.golf")
-                }
+            if queryiedGames.isEmpty {
+                StartGameView()
+                    .tabItem {
+                        Label("Overview", systemImage: "house.fill")
+                    }
+            } else {
+                GamePlayView()
+                    .tabItem {
+                        Label("Game", systemImage: "figure.golf")
+                    }
+            }
 
             HistoryView()
                 .tabItem {

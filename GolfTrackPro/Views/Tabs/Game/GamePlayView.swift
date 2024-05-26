@@ -12,28 +12,39 @@ struct GamePlayView: View {
     @Query(filter: #Predicate<Game> { game in
         game.completedAt == nil
     }, sort: \Game.createdAt, order: .reverse) private var queryiedGames: [Game]
-    private var numberOfHoles: Int = 18
+    private var numberOfHoles: Int {
+        return queryiedGames.first?.gameplay == .eighteenHoles ? 18 : 9
+    }
     @State private var showEndGameAlert = false
 
     var body: some View {
         NavigationView {
             VStack {
-                let scores = queryiedGames.first?.scores ?? []
-                List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                    NavigationLink(destination: HoleDetailView(hole: score.hole,
-                                                           score: score,
-                                                           isEditable: true)) {
-                        HoleScoreView(hole: score.hole, score: score)
+                if let game = queryiedGames.first {
+                    if let course = game.course {
+                        Text("Course: \(course)")
+                            .font(.headline)
                     }
-                }
+                    let gameplay = game.gameplay ?? .eighteenHoles
+                    Text("Gameplay: \(gameplay.rawValue)")
+                        .font(.subheadline)
+                        .padding(.bottom)
 
-                HStack {
-                    Text("Total Score")
-                    Spacer()
-                    Text("\(totalScore())")
-                        .bold()
+                    let scores = game.scores
+                    List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
+                        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)) {
+                            HoleScoreView(hole: score.hole, score: score)
+                        }
+                    }
+
+                    HStack {
+                        Text("Total Score")
+                        Spacer()
+                        Text("\(totalScore())")
+                            .bold()
+                    }
+                    .padding()
                 }
-                .padding()
             }
             .navigationTitle("⛳️ GolfTrack Pro")
             .navigationBarItems(trailing: Button(action: {
@@ -59,16 +70,8 @@ struct GamePlayView: View {
     private func loadScores() {
         print("Number of persisted games: \(queryiedGames.count)")
         if queryiedGames.isEmpty {
-            print("Creating a new game of scores.")
-            startGame()
+            print("No ongoing games. Please start a new game.")
         }
-    }
-
-    private func startGame() {
-        let game = Game()
-        let scores = (1...numberOfHoles).map { Score(game: game, hole: $0) }
-        game.scores = scores
-        modelContext.insert(game)
     }
 
     private func endGame() {
@@ -76,6 +79,10 @@ struct GamePlayView: View {
             game.completedAt = Date()
         }
         startGame()
+    }
+
+    private func startGame() {
+        // This method is not needed anymore as games are created in the OverviewView.
     }
 
     private func totalScore() -> Int {
@@ -86,6 +93,7 @@ struct GamePlayView: View {
         }
     }
 }
+
 
 #Preview {
     GamePlayView()
