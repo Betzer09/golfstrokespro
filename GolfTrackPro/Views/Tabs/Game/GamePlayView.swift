@@ -7,8 +7,6 @@
 import SwiftUI
 import SwiftData
 
-import SwiftUI
-
 struct GamePlayView: View {
     @Environment(\.modelContext) var modelContext
     @Query(filter: #Predicate<Game> { game in
@@ -18,6 +16,9 @@ struct GamePlayView: View {
         return queryiedGames.first?.gameplay == .eighteenHoles ? 18 : 9
     }
     @State private var showEndGameAlert = false
+    @State private var showToast = false
+    @State private var toastMessage = ""
+    @State private var previousHole: Score?
 
     var body: some View {
         NavigationView {
@@ -34,7 +35,14 @@ struct GamePlayView: View {
 
                     let scores = game.scores
                     List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                        HoleScoreView(hole: score.hole, score: score)
+                        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)
+                                        .onAppear {
+                                            lockPreviousHole(score: score)
+                                        }) {
+                            HoleScoreView(hole: score.hole, score: score, onSwingAdded: {
+                                lockPreviousHole(score: score)
+                            })
+                        }
                     }
 
                     HStack {
@@ -64,6 +72,10 @@ struct GamePlayView: View {
                 )
             }
             .onAppear(perform: loadScores)
+            .overlay(
+                showToast ? AnyView(Toast(message: toastMessage)) : AnyView(EmptyView()),
+                alignment: .top
+            )
         }
     }
 
@@ -71,6 +83,24 @@ struct GamePlayView: View {
         print("Number of persisted games: \(queryiedGames.count)")
         if queryiedGames.isEmpty {
             print("No ongoing games. Please start a new game.")
+        }
+    }
+
+    private func lockPreviousHole(score: Score) {
+        if let previousHole = previousHole, previousHole.hole != score.hole {
+            previousHole.isLocked = true
+            showToast(message: "Hole \(previousHole.hole) was locked. Swipe to unlock if needed.")
+        }
+        previousHole = score
+    }
+
+    private func showToast(message: String) {
+        toastMessage = message
+        showToast = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                showToast = false
+            }
         }
     }
 
@@ -88,7 +118,6 @@ struct GamePlayView: View {
         }
     }
 }
-
 
 #Preview {
     GamePlayView()

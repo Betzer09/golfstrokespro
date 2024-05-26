@@ -11,6 +11,7 @@ struct HoleScoreAdjuster: View {
     let hole: Int
     @Bindable var score: Score
     @Binding var showLockAlert: Bool
+    var onSwingAdded: () -> Void
 
     var body: some View {
         HStack {
@@ -24,6 +25,7 @@ struct HoleScoreAdjuster: View {
                 } else {
                     score.swings.append(Swing(score: score))
                     print("Increased score for hole \(hole) to \(score.swings.count)")
+                    onSwingAdded()
                 }
             }) {
                 Image(systemName: "plus.circle")
@@ -36,8 +38,9 @@ struct HoleScoreAdjuster: View {
 }
 
 
+
 #Preview {
     HoleScoreAdjuster(hole: 8,
                       score: PreviewConstants.score,
-                      showLockAlert: .constant(false))
+                      showLockAlert: .constant(false), onSwingAdded: {})
 }

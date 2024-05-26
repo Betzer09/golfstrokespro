@@ -34,6 +34,7 @@
 		07A674F42C016552005CC97F /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 07A674F32C016552005CC97F /* FirebasePerformance */; };
 		07A674F72C02AF0F005CC97F /* ClubPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F62C02AF0F005CC97F /* ClubPicker.swift */; };
 		07A674F92C02B50A005CC97F /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F82C02B50A005CC97F /* StartGameView.swift */; };
+		07A674FB2C03BD6B005CC97F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FA2C03BD6B005CC97F /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		07A674D72C016245005CC97F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		07A674F62C02AF0F005CC97F /* ClubPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubPicker.swift; sourceTree = "<group>"; };
 		07A674F82C02B50A005CC97F /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
+		07A674FA2C03BD6B005CC97F /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				0789E9402BFE6D3700A56F1E /* Tabs */,
 				0789E93D2BFE6D0B00A56F1E /* Main */,
+				07A674FA2C03BD6B005CC97F /* Toast.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				0789E93C2BFE677300A56F1E /* LandingView.swift in Sources */,
 				0752E8912BFA5AB10073072E /* GamePlayView.swift in Sources */,
 				0789E9442BFE6D5F00A56F1E /* StatsView.swift in Sources */,
+				07A674FB2C03BD6B005CC97F /* Toast.swift in Sources */,
 				0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */,
 				07A674CF2C000B96005CC97F /* Game.swift in Sources */,
 			);

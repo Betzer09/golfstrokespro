@@ -27,7 +27,7 @@ struct HoleLocationTrackingView: View {
                 }
             }) {
                 Image(systemName: isTracking ? "stop.circle.fill" : "location.fill.viewfinder")
-                    .foregroundColor(score.isLocked ? .gray : .green)
+                    .foregroundColor(score.isLocked ? .blue.opacity(0.3) : .blue)
             }
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, 8)
