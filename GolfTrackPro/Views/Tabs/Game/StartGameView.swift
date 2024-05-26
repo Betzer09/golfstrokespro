@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct StartGameView: View {
     @Environment(\.modelContext) var modelContext
     @State private var selectedCourse: String = ""
     @State private var selectedGameplay: GameplayType = .eighteenHoles
     @State private var showGamePlayView = false
+    @StateObject private var locationManager = LocationManager()
+    @State private var isLoading = false
 
     var body: some View {
         NavigationView {
@@ -28,6 +31,27 @@ struct StartGameView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
 
+                if isLoading {
+                    ProgressView("Searching for nearby golf courses...")
+                        .padding()
+                } else if locationManager.nearbyGolfCourses.isEmpty {
+                    Text("No nearby golf courses found.")
+                        .padding()
+                } else {
+                    List(locationManager.nearbyGolfCourses, id: \.self) { item in
+                        Button(action: {
+                            selectedCourse = item.name ?? ""
+                        }) {
+                            VStack(alignment: .leading) {
+                                Text(item.name ?? "Unknown")
+                                    .font(.headline)
+                                Text(item.placemark.title ?? "")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+
                 Button(action: startNewGame) {
                     Text("Start New Game")
                         .foregroundColor(.white)
@@ -41,6 +65,13 @@ struct StartGameView: View {
                 }
             }
             .navigationTitle("Start New Game")
+            .onAppear {
+                locationManager.requestLocationPermissions()
+                isLoading = true
+                locationManager.searchForGolfCourses { _ in
+                    isLoading = false
+                }
+            }
         }
     }
 
@@ -54,7 +85,6 @@ struct StartGameView: View {
         showGamePlayView = true
     }
 }
-
 
 #Preview {
     StartGameView()
