@@ -29,7 +29,9 @@ struct HistoryView: View {
                         ForEach(completedGames) { game in
                             NavigationLink(destination: CompletedGameDetailView(game: game)) {
                                 VStack(alignment: .leading) {
-                                    Text("Game on \(game.createdAt, formatter: dateFormatter)")
+                                    Text("\(game.course ?? "Unspecified Course")")
+                                        .font(.title)
+                                    Text("\(game.createdAt, formatter: dateFormatter)")
                                         .font(.headline)
                                     Text("Score: \(totalScore(for: game))")
                                         .font(.subheadline)
