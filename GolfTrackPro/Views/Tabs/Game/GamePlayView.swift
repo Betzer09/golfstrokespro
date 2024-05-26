@@ -84,7 +84,8 @@ struct GamePlayView: View {
 
     private func initializePreviousHole() {
         if let game = queryiedGames.first {
-            previousHole = game.scores.max(by: { $0.swings.last?.timestamp ?? Date.distantPast < $1.swings.last?.timestamp ?? Date.distantPast })
+            previousHole = game.scores.filter { !$0.swings.isEmpty }
+                .max(by: { $0.swings.last?.timestamp ?? Date.distantPast < $1.swings.last?.timestamp ?? Date.distantPast })
         }
     }
 
