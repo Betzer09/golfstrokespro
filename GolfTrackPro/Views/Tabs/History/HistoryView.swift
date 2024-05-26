@@ -22,34 +22,58 @@ struct HistoryView: View {
                 if completedGames.isEmpty {
                     let noHistoryText = "It looks like you haven't completed any games yet. Start playing to see your game history here."
                     ContentUnavailableView("No Game History",
-                                           systemImage: "golfclub", 
+                                           systemImage: "golfclub",
                                            description: Text(noHistoryText))
-
                 } else {
-                    CompletedGamesList(
-                        completedGames: completedGames,
-                        showDeleteAlert: $showDeleteAlert,
-                        gameToDelete: $gameToDelete,
-                        totalScore: totalScore,
-                        dateFormatter: dateFormatter
-                    )
+                    List {
+                        ForEach(completedGames) { game in
+                            NavigationLink(destination: CompletedGameDetailView(game: game)) {
+                                VStack(alignment: .leading) {
+                                    Text("Game on \(game.createdAt, formatter: dateFormatter)")
+                                        .font(.headline)
+                                    Text("Score: \(totalScore(for: game))")
+                                        .font(.subheadline)
+                                }
+                            }
+                            .swipeActions {
+                                Button("Delete") {
+                                    gameToDelete = game
+                                    showDeleteAlert = true
+                                }
+                                .tint(.red)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("Game History")
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Game"),
+                    message: Text("Are you sure you want to delete this game?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let game = gameToDelete {
+                            modelContext.delete(game)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
 
     private func totalScore(for game: Game) -> Int {
         return game.scores.reduce(0) { $0 + $1.swings.count }
     }
+
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
 }
 
-private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    formatter.timeStyle = .short
-    return formatter
-}()
 
 
 #Preview {
