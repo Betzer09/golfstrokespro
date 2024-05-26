@@ -10,6 +10,7 @@ import SwiftUI
 struct HoleScoreAdjuster: View {
     let hole: Int
     @Bindable var score: Score
+    @Binding var showLockAlert: Bool
 
     var body: some View {
         HStack {
@@ -18,11 +19,15 @@ struct HoleScoreAdjuster: View {
                 .multilineTextAlignment(.center)
 
             Button(action: {
-                score.swings.append(Swing(score: score))
-                print("Increased score for hole \(hole) to \(score.swings.count)")
+                if score.isLocked {
+                    showLockAlert = true
+                } else {
+                    score.swings.append(Swing(score: score))
+                    print("Increased score for hole \(hole) to \(score.swings.count)")
+                }
             }) {
                 Image(systemName: "plus.circle")
-                    .foregroundColor(.green)
+                    .foregroundColor(score.isLocked ? .gray : .green)
             }
             .buttonStyle(PlainButtonStyle())
             .padding(.leading, 8)
@@ -30,7 +35,9 @@ struct HoleScoreAdjuster: View {
     }
 }
 
+
 #Preview {
     HoleScoreAdjuster(hole: 8,
-                  score: PreviewConstants.score)
+                      score: PreviewConstants.score,
+                      showLockAlert: .constant(false))
 }

@@ -10,20 +10,24 @@ import CoreLocation
 
 struct HoleLocationTrackingView: View {
     @StateObject private var locationManager = LocationManager()
+    @Bindable var score: Score
     @State private var isTracking = false
     @State private var enableLocationAlert = false
     @State private var showClubPicker = false
     @State private var selectedClub: Club? = nil
-
-    @Bindable var score: Score
+    @Binding var showLockAlert: Bool
 
     var body: some View {
         VStack {
             Button(action: {
-                handleLocationButtonTapped()
+                if score.isLocked {
+                    showLockAlert = true
+                } else {
+                    handleLocationButtonTapped()
+                }
             }) {
                 Image(systemName: isTracking ? "stop.circle.fill" : "location.fill.viewfinder")
-                    .foregroundColor(.blue)
+                    .foregroundColor(score.isLocked ? .gray : .green)
             }
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, 8)
@@ -84,5 +88,6 @@ struct HoleLocationTrackingView: View {
 
 
 #Preview {
-    HoleLocationTrackingView(score: PreviewConstants.score)
+    HoleLocationTrackingView(score: PreviewConstants.score,
+                             showLockAlert: .constant(false))
 }

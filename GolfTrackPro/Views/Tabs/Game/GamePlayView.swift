@@ -7,6 +7,8 @@
 import SwiftUI
 import SwiftData
 
+import SwiftUI
+
 struct GamePlayView: View {
     @Environment(\.modelContext) var modelContext
     @Query(filter: #Predicate<Game> { game in
@@ -32,9 +34,7 @@ struct GamePlayView: View {
 
                     let scores = game.scores
                     List(scores.sorted(by: { $0.hole < $1.hole }), id: \.self) { score in
-                        NavigationLink(destination: HoleDetailView(hole: score.hole, score: score, isEditable: true)) {
-                            HoleScoreView(hole: score.hole, score: score)
-                        }
+                        HoleScoreView(hole: score.hole, score: score)
                     }
 
                     HStack {
@@ -78,11 +78,6 @@ struct GamePlayView: View {
         if let game = queryiedGames.first {
             game.completedAt = Date()
         }
-        startGame()
-    }
-
-    private func startGame() {
-        // This method is not needed anymore as games are created in the OverviewView.
     }
 
     private func totalScore() -> Int {

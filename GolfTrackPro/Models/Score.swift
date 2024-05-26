@@ -13,6 +13,7 @@ class Score: ObservableObject, Codable {
     @Relationship(deleteRule: .cascade) var swings: [Swing] = []
     let game: Game
     let hole: Int
+    var isLocked: Bool = false
 
     init(game: Game, hole: Int) {
         self.hole = hole
