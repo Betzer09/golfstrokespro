@@ -22,11 +22,14 @@ struct StatsView: View {
                 } else {
                     List {
                         ForEach(preloadedData.averageDistances, id: \.key) { clubType, averageDistance in
-                            HStack {
-                                Text(clubType.rawValue.capitalized)
-                                Spacer()
-                                Text("\(String(format: "%.2f", averageDistance)) yds")
-                                    .foregroundColor(.gray)
+                            NavigationLink(destination: ClubDetailView(clubType: clubType)
+                                .environmentObject(preloadedData)) {
+                                HStack {
+                                    Text(clubType.rawValue.capitalized)
+                                    Spacer()
+                                    Text("\(String(format: "%.2f", averageDistance)) yds")
+                                        .foregroundColor(.gray)
+                                }
                             }
                         }
                     }

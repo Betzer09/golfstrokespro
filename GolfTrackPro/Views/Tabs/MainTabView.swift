@@ -47,7 +47,7 @@ struct MainTabView: View {
         }
         .onAppear {
             if preloadedData.isLoading {
-                preloadedData.loadAverageDistances(modelContext: modelContext)
+                preloadedData.loadAllSwings(modelContext: modelContext)
             }
         }
     }
