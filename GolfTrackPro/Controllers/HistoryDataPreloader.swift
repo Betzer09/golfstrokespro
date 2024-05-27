@@ -12,6 +12,7 @@ class PreloadedData: ObservableObject {
     @Published var allSwings: [Swing] = []
     @Published var averageDistances: [(key: ClubType, value: Double)] = []
     @Published var isLoading = true
+    private var statisticsCache: [ClubType: (average: Double?, median: Double?, variance: Double?, standardDeviation: Double?, mode: Double?, range: Double?, min: Double?, max: Double?, q1: Double?, q3: Double?, iqr: Double?, count: Int, sum: Double, outliers: [Double])] = [:]
 
     func loadAllSwings(modelContext: ModelContext) {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -32,6 +33,9 @@ class PreloadedData: ObservableObject {
                     let totalDistance = swings.compactMap { $0.distance }.reduce(0, +)
                     let averageDistance = totalDistance / Double(swings.count)
                     averages[clubType] = averageDistance
+
+                    // Preload statistics for each club type
+                    self.statisticsCache[clubType] = self.calculateStatistics(for: clubType, with: swings)
                 }
 
                 let sortedAverages = averages.sorted { $0.value > $1.value }
@@ -56,8 +60,17 @@ class PreloadedData: ObservableObject {
     }
 
     func calculateStatistics(for clubType: ClubType) -> (average: Double?, median: Double?, variance: Double?, standardDeviation: Double?, mode: Double?, range: Double?, min: Double?, max: Double?, q1: Double?, q3: Double?, iqr: Double?, count: Int, sum: Double, outliers: [Double]) {
+        // Check if statistics are already cached
+        if let cachedStats = statisticsCache[clubType] {
+            return cachedStats
+        }
+
         let filteredSwings = allSwings.filter { $0.club?.type == clubType }
-        let distances = filteredSwings.compactMap { $0.distance }
+        return calculateStatistics(for: clubType, with: filteredSwings)
+    }
+
+    private func calculateStatistics(for clubType: ClubType, with swings: [Swing]) -> (average: Double?, median: Double?, variance: Double?, standardDeviation: Double?, mode: Double?, range: Double?, min: Double?, max: Double?, q1: Double?, q3: Double?, iqr: Double?, count: Int, sum: Double, outliers: [Double]) {
+        let distances = swings.compactMap { $0.distance }
 
         guard !distances.isEmpty else {
             return (nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 0, 0, [])
@@ -78,7 +91,12 @@ class PreloadedData: ObservableObject {
         let sum = distances.reduce(0, +)
         let outliers = findOutliers(distances)
 
-        return (average, median, variance, standardDeviation, mode, range, min, max, q1, q3, iqr, count, sum, outliers)
+        let stats = (average, median, variance, standardDeviation, mode, range, min, max, q1, q3, iqr, count, sum, outliers)
+
+        // Cache the calculated statistics
+        statisticsCache[clubType] = stats
+
+        return stats
     }
 
     private func calculateMedian(_ distances: [Double]) -> Double? {

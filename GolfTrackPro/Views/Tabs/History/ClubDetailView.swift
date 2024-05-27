@@ -72,11 +72,11 @@ struct ClubDetailView: View {
         }
         .navigationTitle("\(clubType.rawValue.capitalized) Statistics")
         .onAppear {
-            calculateStatistics()
+            loadStatistics()
         }
     }
 
-    private func calculateStatistics() {
+    private func loadStatistics() {
         DispatchQueue.global(qos: .userInitiated).async {
             let start = DispatchTime.now()
             let stats = preloadedData.calculateStatistics(for: clubType)
@@ -84,7 +84,7 @@ struct ClubDetailView: View {
             let end = DispatchTime.now()
             let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
             let timeInterval = Double(nanoTime) / 1_000_000_000
-            print("***Time to calculate statistics: \(timeInterval) seconds")
+            print("***Time to load statistics: \(timeInterval) seconds")
 
             DispatchQueue.main.async {
                 self.statistics = stats
