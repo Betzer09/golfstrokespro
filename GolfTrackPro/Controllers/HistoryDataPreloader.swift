@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-class PreloadedData: ObservableObject {
+class HistoryDataPreloader: ObservableObject {
     @Published var allSwings: [Swing] = []
     @Published var averageDistances: [(key: ClubType, value: Double)] = []
     @Published var isLoading = true

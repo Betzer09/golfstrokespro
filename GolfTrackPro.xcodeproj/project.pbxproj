@@ -38,6 +38,7 @@
 		07A674FE2C043B21005CC97F /* MockGameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FD2C043B21005CC97F /* MockGameGenerator.swift */; };
 		07A675002C044386005CC97F /* HistoryDataPreloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FF2C044386005CC97F /* HistoryDataPreloader.swift */; };
 		07A675032C0449CB005CC97F /* ClubDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A675022C0449CB005CC97F /* ClubDetailView.swift */; };
+		07A675052C045965005CC97F /* StatisticRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A675042C045965005CC97F /* StatisticRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		07A674FD2C043B21005CC97F /* MockGameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameGenerator.swift; sourceTree = "<group>"; };
 		07A674FF2C044386005CC97F /* HistoryDataPreloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDataPreloader.swift; sourceTree = "<group>"; };
 		07A675022C0449CB005CC97F /* ClubDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailView.swift; sourceTree = "<group>"; };
+		07A675042C045965005CC97F /* StatisticRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				07A674D12C00290B005CC97F /* CompletedGameDetailView.swift */,
 				07A674D52C00EB4F005CC97F /* CompleteGameList.swift */,
 				07A675022C0449CB005CC97F /* ClubDetailView.swift */,
+				07A675042C045965005CC97F /* StatisticRow.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				07A674F72C02AF0F005CC97F /* ClubPicker.swift in Sources */,
 				0718BB892BFC3A9000A29183 /* HoleDetailView.swift in Sources */,
 				07A674D22C00290B005CC97F /* CompletedGameDetailView.swift in Sources */,
+				07A675052C045965005CC97F /* StatisticRow.swift in Sources */,
 				0789E9462BFE6D6900A56F1E /* ProfileView.swift in Sources */,
 				0797A9AF2BFD91EA0022D874 /* HoleLocationTrackingView.swift in Sources */,
 				07A674D42C00E833005CC97F /* View+Extensions.swift in Sources */,

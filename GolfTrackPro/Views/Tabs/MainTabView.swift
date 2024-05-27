@@ -13,7 +13,7 @@ struct MainTabView: View {
         game.completedAt == nil
     }, sort: \Game.createdAt, order: .reverse) private var queryiedGames: [Game]
 
-    @StateObject private var preloadedData = PreloadedData()
+    @StateObject private var preloadedData = HistoryDataPreloader()
     @Environment(\.modelContext) var modelContext
 
     var body: some View {

@@ -10,7 +10,7 @@ import SwiftData
 
 struct StatsView: View {
     @Environment(\.modelContext) var modelContext
-    @ObservedObject var preloadedData: PreloadedData
+    @ObservedObject var preloadedData: HistoryDataPreloader
 
     var body: some View {
         NavigationView {
@@ -41,5 +41,5 @@ struct StatsView: View {
 }
 
 #Preview {
-    StatsView(preloadedData: PreloadedData())
+    StatsView(preloadedData: HistoryDataPreloader())
 }
