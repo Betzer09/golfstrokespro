@@ -35,6 +35,7 @@
 		07A674F72C02AF0F005CC97F /* ClubPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F62C02AF0F005CC97F /* ClubPicker.swift */; };
 		07A674F92C02B50A005CC97F /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F82C02B50A005CC97F /* StartGameView.swift */; };
 		07A674FB2C03BD6B005CC97F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FA2C03BD6B005CC97F /* Toast.swift */; };
+		07A674FE2C043B21005CC97F /* MockGameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FD2C043B21005CC97F /* MockGameGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		07A674F62C02AF0F005CC97F /* ClubPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubPicker.swift; sourceTree = "<group>"; };
 		07A674F82C02B50A005CC97F /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		07A674FA2C03BD6B005CC97F /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		07A674FD2C043B21005CC97F /* MockGameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				0752E8862BFA5A050073072E /* Assets.xcassets */,
 				0752E8882BFA5A050073072E /* Preview Content */,
 				07A674D32C00E833005CC97F /* View+Extensions.swift */,
+				07A674FD2C043B21005CC97F /* MockGameGenerator.swift */,
 			);
 			path = GolfTrackPro;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				0752E8912BFA5AB10073072E /* GamePlayView.swift in Sources */,
 				0789E9442BFE6D5F00A56F1E /* StatsView.swift in Sources */,
 				07A674FB2C03BD6B005CC97F /* Toast.swift in Sources */,
+				07A674FE2C043B21005CC97F /* MockGameGenerator.swift in Sources */,
 				0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */,
 				07A674CF2C000B96005CC97F /* Game.swift in Sources */,
 			);

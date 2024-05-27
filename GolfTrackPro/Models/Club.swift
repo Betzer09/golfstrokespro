@@ -69,6 +69,7 @@ enum ClubType: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
 }
 
+
 /// A static list of currenlty available mock clubs
 let allClubs: [Club] = ClubType.allCases.map { Club(type: $0) }
 
