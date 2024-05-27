@@ -36,6 +36,7 @@
 		07A674F92C02B50A005CC97F /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674F82C02B50A005CC97F /* StartGameView.swift */; };
 		07A674FB2C03BD6B005CC97F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FA2C03BD6B005CC97F /* Toast.swift */; };
 		07A674FE2C043B21005CC97F /* MockGameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FD2C043B21005CC97F /* MockGameGenerator.swift */; };
+		07A675002C044386005CC97F /* HistoryDataPreloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A674FF2C044386005CC97F /* HistoryDataPreloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		07A674F82C02B50A005CC97F /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 		07A674FA2C03BD6B005CC97F /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		07A674FD2C043B21005CC97F /* MockGameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGameGenerator.swift; sourceTree = "<group>"; };
+		07A674FF2C044386005CC97F /* HistoryDataPreloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDataPreloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +118,9 @@
 		0752E8812BFA5A040073072E /* GolfTrackPro */ = {
 			isa = PBXGroup;
 			children = (
+				07A675012C044394005CC97F /* Controllers */,
 				07A674D72C016245005CC97F /* GoogleService-Info.plist */,
 				0797A9B02BFD92CB0022D874 /* GPSMocks */,
-				0797A9AC2BFD804C0022D874 /* LocationManager.swift */,
 				0718BB8A2BFC405400A29183 /* Models */,
 				0752E8942BFA5DB70073072E /* Views */,
 				0752E8862BFA5A050073072E /* Assets.xcassets */,
@@ -207,6 +209,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		07A675012C044394005CC97F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07A674FF2C044386005CC97F /* HistoryDataPreloader.swift */,
+				0797A9AC2BFD804C0022D874 /* LocationManager.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 				07A674FE2C043B21005CC97F /* MockGameGenerator.swift in Sources */,
 				0789E93F2BFE6D2200A56F1E /* MainTabView.swift in Sources */,
 				07A674CF2C000B96005CC97F /* Game.swift in Sources */,
+				07A675002C044386005CC97F /* HistoryDataPreloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

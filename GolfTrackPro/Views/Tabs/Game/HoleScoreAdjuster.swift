@@ -24,7 +24,7 @@ struct HoleScoreAdjuster: View {
                     showLockAlert = true
                 } else {
                     score.swings.append(Swing(score: score))
-                    print("Increased score for hole \(hole) to \(score.swings.count)")
+                    print("***Increased score for hole \(hole) to \(score.swings.count)")
                     onSwingAdded()
                 }
             }) {

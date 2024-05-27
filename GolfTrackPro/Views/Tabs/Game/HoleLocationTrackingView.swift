@@ -72,7 +72,7 @@ struct HoleLocationTrackingView: View {
         guard let _ = selectedClub else { return }
         locationManager.startTracking()
         isTracking = true
-        print("Started tracking")
+        print("***Started tracking")
     }
 
     private func stopTracking() {
@@ -80,7 +80,7 @@ struct HoleLocationTrackingView: View {
         if let distance = locationManager.currentDistance {
             let newSwing = Swing(score: score, club: selectedClub, distance: distance)
             score.swings.append(newSwing)
-            print("Stopped tracking. Distance: \(distance) yards. New swing added.")
+            print("***Stopped tracking. Distance: \(distance) yards. New swing added.")
         }
         isTracking = false
     }

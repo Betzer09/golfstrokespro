@@ -13,6 +13,9 @@ struct MainTabView: View {
         game.completedAt == nil
     }, sort: \Game.createdAt, order: .reverse) private var queryiedGames: [Game]
 
+    @StateObject private var preloadedData = PreloadedData()
+    @Environment(\.modelContext) var modelContext
+
     var body: some View {
         TabView {
             if queryiedGames.isEmpty {
@@ -32,7 +35,7 @@ struct MainTabView: View {
                     Label("History", systemImage: "clock.fill")
                 }
 
-            StatsView()
+            StatsView(preloadedData: preloadedData)
                 .tabItem {
                     Label("Stats", systemImage: "chart.bar.fill")
                 }
@@ -41,6 +44,11 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Profile", systemImage: "person.fill")
                 }
+        }
+        .onAppear {
+            if preloadedData.isLoading {
+                preloadedData.loadAverageDistances(modelContext: modelContext)
+            }
         }
     }
 }

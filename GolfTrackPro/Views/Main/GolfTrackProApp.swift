@@ -37,7 +37,7 @@ struct GolfTrackProApp: App {
         .modelContainer(for: [Game.self, Swing.self, Score.self, Club.self]) { result in
             switch result {
             case .success(let container):
-                print("Persistence layer has been configured.")
+                print("***Persistence layer has been configured.")
                 DispatchQueue.global().async {
 //                    generateTestGames(context: container)
                     DispatchQueue.main.async {
@@ -45,7 +45,7 @@ struct GolfTrackProApp: App {
                     }
                 }
             case .failure(let error):
-                print("Failed to configure persistence layer. Error: \(error)")
+                print("***Failed to configure persistence layer. Error: \(error)")
             }
         }
     }
@@ -71,7 +71,7 @@ struct GolfTrackProApp: App {
         do {
             try modelContext.save()
         } catch {
-            print("Failed to save test games: \(error.localizedDescription)")
+            print("***Failed to save test games: \(error.localizedDescription)")
         }
     }
 }

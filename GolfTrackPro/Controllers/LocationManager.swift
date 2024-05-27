@@ -88,13 +88,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let search = MKLocalSearch(request: request)
         search.start { response, error in
             if let error = error {
-                print("Error searching for golf courses: \(error.localizedDescription)")
+                print("***Error searching for golf courses: \(error.localizedDescription)")
                 completion(nil)
                 return
             }
 
             guard let response = response else {
-                print("No golf courses found")
+                print("***No golf courses found")
                 completion(nil)
                 return
             }
@@ -121,7 +121,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             let encodedData = try NSKeyedArchiver.archivedData(withRootObject: golfCourses, requiringSecureCoding: false)
             userDefaults.set(encodedData, forKey: cacheKey)
         } catch {
-            print("Failed to cache golf courses: \(error.localizedDescription)")
+            print("***Failed to cache golf courses: \(error.localizedDescription)")
         }
     }
 
@@ -132,7 +132,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 return golfCourses
             }
         } catch {
-            print("Failed to retrieve cached golf courses: \(error.localizedDescription)")
+            print("***Failed to retrieve cached golf courses: \(error.localizedDescription)")
         }
         return nil
     }
@@ -142,7 +142,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             let encodedData = try NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false)
             userDefaults.set(encodedData, forKey: locationKey)
         } catch {
-            print("Failed to cache last known location: \(error.localizedDescription)")
+            print("***Failed to cache last known location: \(error.localizedDescription)")
         }
     }
 
@@ -153,7 +153,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 return location
             }
         } catch {
-            print("Failed to retrieve cached last known location: \(error.localizedDescription)")
+            print("***Failed to retrieve cached last known location: \(error.localizedDescription)")
         }
         return nil
     }
